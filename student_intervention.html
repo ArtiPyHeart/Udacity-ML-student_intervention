@@ -12478,7 +12478,7 @@ KNN模型的缺陷在于，如果数据样本维度太高，预测时容易导�
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：从sklearn中引入三个监督学习模型</span>
@@ -12490,45 +12490,39 @@ KNN模型的缺陷在于，如果数据样本维度太高，预测时容易导�
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 
 <span class="c1"># TODO：初始化三个模型</span>
-<span class="n">clf_A</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">clf_C</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
 
 <span class="c1"># TODO：设置训练集大小</span>
-<span class="c1"># X_train_100 = None</span>
-<span class="c1"># y_train_100 = None</span>
+<span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
 
-<span class="n">X_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">y_test_100</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train_200</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">y_train_200</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
 
-<span class="c1"># X_train_200 = None</span>
-<span class="c1"># y_train_200 = None</span>
-
-<span class="n">X_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">y_test_200</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># X_train_300 = None</span>
-<span class="c1"># y_train_300 = None</span>
-
-<span class="n">X_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">y_test_300</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
+<span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
 
 <span class="c1"># TODO：对每一个分类器和每一个训练集大小运行&#39;train_predict&#39; </span>
 <span class="c1"># train_predict(clf, X_train, y_train, X_test, y_test)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test_100</span><span class="p">,</span> <span class="n">y_test_100</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test_200</span><span class="p">,</span> <span class="n">y_test_200</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test_300</span><span class="p">,</span> <span class="n">y_test_300</span><span class="p">)</span>
+<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12544,75 +12538,75 @@ KNN模型的缺陷在于，如果数据样本维度太高，预测时容易导�
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a SVC using a training set size of 100. . .
-Trained model in 0.0150 seconds
-Made predictions in 0.0000 seconds.
-F1 score for training set: 0.9173.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7350.
+Trained model in 0.0030 seconds
+Made predictions in 0.0010 seconds.
+F1 score for training set: 0.9219.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7556.
 
 
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0160 seconds
-Made predictions in 0.0160 seconds.
-F1 score for training set: 0.8780.
-Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7885.
+Trained model in 0.0180 seconds
+Made predictions in 0.0020 seconds.
+F1 score for training set: 0.8551.
+Made predictions in 0.0010 seconds.
+F1 score for test set: 0.7770.
 
 
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0470 seconds
+Trained model in 0.0400 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.8413.
+F1 score for training set: 0.8496.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7794.
+F1 score for test set: 0.7681.
 
 
 Training a GaussianNB using a training set size of 100. . .
 Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.5833.
+F1 score for training set: 0.5870.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.4759.
+F1 score for test set: 0.3478.
 
 
 Training a GaussianNB using a training set size of 200. . .
 Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.8129.
+F1 score for training set: 0.7649.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7294.
+F1 score for test set: 0.6614.
 
 
 Training a GaussianNB using a training set size of 300. . .
-Trained model in 0.0150 seconds
+Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.7912.
+F1 score for training set: 0.7850.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7576.
+F1 score for test set: 0.7206.
 
 
 Training a KNeighborsClassifier using a training set size of 100. . .
 Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.8356.
+F1 score for training set: 0.8467.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7534.
+F1 score for test set: 0.7218.
 
 
 Training a KNeighborsClassifier using a training set size of 200. . .
 Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.8800.
-Made predictions in 0.0160 seconds.
-F1 score for test set: 0.7746.
+F1 score for training set: 0.8392.
+Made predictions in 0.0150 seconds.
+F1 score for test set: 0.7943.
 
 
 Training a KNeighborsClassifier using a training set size of 300. . .
 Trained model in 0.0000 seconds
 Made predictions in 0.0000 seconds.
-F1 score for training set: 0.8440.
+F1 score for training set: 0.8424.
 Made predictions in 0.0000 seconds.
-F1 score for test set: 0.7943.
+F1 score for test set: 0.8299.
 </pre>
 </div>
 </div>
@@ -12649,24 +12643,24 @@ F1 score for test set: 0.7943.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0150</td>
-<td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.9173</td>
-<td style="text-align:center">0.7350</td>
+<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.9219</td>
+<td style="text-align:center">0.7556</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0160</td>
-<td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.8780</td>
-<td style="text-align:center">0.7885</td>
+<td style="text-align:center">0.0180</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.8551</td>
+<td style="text-align:center">0.7770</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0470</td>
+<td style="text-align:center">0.0400</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.8413</td>
-<td style="text-align:center">0.7794</td>
+<td style="text-align:center">0.8496</td>
+<td style="text-align:center">0.7681</td>
 </tr>
 </tbody>
 </table>
@@ -12685,22 +12679,22 @@ F1 score for test set: 0.7943.
 <td style="text-align:center">100</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.5833</td>
-<td style="text-align:center">0.4759</td>
+<td style="text-align:center">0.5870</td>
+<td style="text-align:center">0.3478</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.8129</td>
-<td style="text-align:center">0.7294</td>
+<td style="text-align:center">0.7649</td>
+<td style="text-align:center">0.6614</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0150</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.7912</td>
-<td style="text-align:center">0.7576</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.7850</td>
+<td style="text-align:center">0.7206</td>
 </tr>
 </tbody>
 </table>
@@ -12719,22 +12713,22 @@ F1 score for test set: 0.7943.
 <td style="text-align:center">100</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.8356</td>
-<td style="text-align:center">0.7534</td>
+<td style="text-align:center">0.8467</td>
+<td style="text-align:center">0.7218</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.0160</td>
-<td style="text-align:center">0.8800</td>
-<td style="text-align:center">0.7746</td>
+<td style="text-align:center">0.0000</td>
+<td style="text-align:center">0.8392</td>
+<td style="text-align:center">0.7943</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
 <td style="text-align:center">0.0000</td>
 <td style="text-align:center">0.0000</td>
-<td style="text-align:center">0.8440</td>
-<td style="text-align:center">0.7943</td>
+<td style="text-align:center">0.8424</td>
+<td style="text-align:center">0.8299</td>
 </tr>
 </tbody>
 </table>
@@ -12818,7 +12812,7 @@ F1 score for test set: 0.7943.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: 导入 &#39;GridSearchCV&#39; 和 &#39;make_scorer&#39;</span>
@@ -12826,7 +12820,7 @@ F1 score for test set: 0.7943.
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
 <span class="c1"># TODO：创建你希望调整的参数列表</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="s1">&#39;weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]}</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="s1">&#39;weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]}</span>
 
 <span class="c1"># TODO：初始化分类器</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
@@ -12863,10 +12857,10 @@ F1 score for test set: 0.7943.
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0060 seconds.
-Tuned model has a training F1 score of 0.8349.
-Made predictions in 0.0030 seconds.
-Tuned model has a testing F1 score of 0.8108.
+<pre>Made predictions in 0.0000 seconds.
+Tuned model has a training F1 score of 0.8312.
+Made predictions in 0.0000 seconds.
+Tuned model has a testing F1 score of 0.8333.
 </pre>
 </div>
 </div>
@@ -12890,7 +12884,7 @@ Tuned model has a testing F1 score of 0.8108.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答: </strong>最终模型训练F1值为0.8349，测试F1值为0.8108，相比于默认模型有所提高。</p>
+<p><strong>回答: </strong>最终模型训练F1值为0.8312，测试F1值为0.8333，相比于默认模型有所提高。</p>
 
 </div>
 </div>
